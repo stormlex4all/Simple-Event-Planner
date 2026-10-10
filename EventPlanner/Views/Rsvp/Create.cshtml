@@ -1,0 +1,30 @@
+@model RsvpPageViewModel
+@{
+	ViewData["Title"] = "RSVP";
+}
+
+<h1>RSVP: @Model.Event.Name</h1>
+<p>@Model.Event.Date.ToString("yyyy-MM-dd") at @Model.Event.Date.ToString("HH:mm") - @Model.Event.Location</p>
+@if (TempData["Message"] is string message)
+{
+	<div class="ok">@message</div>
+}
+<p>Going: <strong>@Model.Summary.Going</strong> | Maybe: <strong>@Model.Summary.Maybe</strong> | Declined: <strong>@Model.Summary.Declined</strong></p>
+
+<form asp-action="Create" asp-route-eventId="@Model.Event.Id" method="post">
+	<div asp-validation-summary="All" class="text-danger"></div>
+
+	<label asp-for="Form.Name"></label>
+	<input asp-for="Form.Name" />
+	<span asp-validation-for="Form.Name" class="text-danger"></span>
+
+	<label asp-for="Form.Email"></label>
+	<input asp-for="Form.Email" />
+	<span asp-validation-for="Form.Email" class="text-danger"></span>
+
+	<label asp-for="Form.Status"></label>
+	<select asp-for="Form.Status" asp-items="Html.GetEnumSelectList<RsvpStatus>()"></select>
+
+	<button type="submit">Send RSVP</button>
+</form>
+<p><a asp-controller="Events" asp-action="Index">Back to upcoming events</a></p>

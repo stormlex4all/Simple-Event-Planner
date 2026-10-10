@@ -14,6 +14,7 @@ namespace EventPlanner.Models
 
 		public string Location { get; set; } = "";
 
+		public List<Rsvp> Rsvps { get; } = [];
 	}
 }
 
