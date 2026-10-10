@@ -1,6 +1,6 @@
 # Simple Event Planner (ASP.NET Core MVC)
 
-A small event-planning web app built for **Software Design and Development - Assignment 01: Plan It, Then Build It**.
+A small event-planning web app built for **Software Design and Development - Assignment 01**.
 Organizers create events, anyone can see what is coming up, and guests RSVP so the organizer knows who is attending.
 
 **Stack:** C#, ASP.NET Core MVC (.NET 10), xUnit(for unit tests). Data is kept in memory for this assignment.
