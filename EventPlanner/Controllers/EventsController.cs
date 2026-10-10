@@ -5,12 +5,11 @@ namespace EventPlanner.Controllers
 {
 	public class EventsController : Controller
 	{
-		private static List<Event> events = new List<Event>();
 		private static int nextId = 1;
 
 		public IActionResult Index()
 		{
-			return View(events.OrderBy(e => e.Date).ToList());
+			return View(EventStore.Events.OrderBy(e => e.Date).ToList());
 		}
 
 		public IActionResult Create()
@@ -24,7 +23,7 @@ namespace EventPlanner.Controllers
 			if (ModelState.IsValid)
 			{
 				newEvent.Id = nextId++;
-				events.Add(newEvent);
+				EventStore.Events.Add(newEvent);
 
 				return RedirectToAction("Index");
 			}
